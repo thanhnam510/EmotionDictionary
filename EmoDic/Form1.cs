@@ -20,6 +20,7 @@ namespace EmoDic
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            tuDienCamXucTableAdapter.Connection.ConnectionString = Program.connStr;
             this.tuDienCamXucTableAdapter.Fill(this.ed_DS.TuDienCamXuc);
             before = bf.Controls.OfType<CheckBox>().ToList<CheckBox>();
             after = aft.Controls.OfType<CheckBox>().ToList<CheckBox>();

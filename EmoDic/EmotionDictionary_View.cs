@@ -21,6 +21,7 @@ namespace EmoDic
         private void EmotionDictionary_View_Load(object sender, EventArgs e)
         {
             // TODO: This line of code loads data into the 'emo_DictionaryDataSet.TuDienCamXuc' table. You can move, or remove it, as needed.
+            tuDienCamXucTableAdapter.Connection.ConnectionString = Program.connStr;
             this.tuDienCamXucTableAdapter.Fill(this.edDS.TuDienCamXuc);
         }
 
