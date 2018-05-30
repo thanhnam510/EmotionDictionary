@@ -29,7 +29,13 @@ namespace EmoDic
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if(txtServer.Text == "")
+            action();
+            
+        }
+
+        private void action()
+        {
+            if (txtServer.Text == "")
             {
                 lbInfo.Text = "Không được để trống ServerName";
                 txtServer.Focus();
@@ -46,7 +52,11 @@ namespace EmoDic
                 this.Close();
             else
                 return;
-            
+        }
+        private void txtServer_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+                action();
         }
     }
 }

@@ -50,6 +50,9 @@
             this.txtServer.Name = "txtServer";
             this.txtServer.Size = new System.Drawing.Size(189, 20);
             this.txtServer.TabIndex = 0;
+            this.txtServer.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtServer_KeyUp);
+            this.txtID.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtServer_KeyUp);
+            this.txtPass.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtServer_KeyUp);
             // 
             // txtDB
             // 

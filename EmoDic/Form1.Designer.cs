@@ -31,12 +31,16 @@
             this.components = new System.ComponentModel.Container();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.aft = new System.Windows.Forms.GroupBox();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.checkAllA = new System.Windows.Forms.CheckBox();
             this.a5 = new System.Windows.Forms.CheckBox();
             this.a4 = new System.Windows.Forms.CheckBox();
             this.a3 = new System.Windows.Forms.CheckBox();
             this.a2 = new System.Windows.Forms.CheckBox();
             this.a1 = new System.Windows.Forms.CheckBox();
             this.bf = new System.Windows.Forms.GroupBox();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.checkAllB = new System.Windows.Forms.CheckBox();
             this.b6 = new System.Windows.Forms.CheckBox();
             this.b5 = new System.Windows.Forms.CheckBox();
             this.b4 = new System.Windows.Forms.CheckBox();
@@ -44,6 +48,8 @@
             this.b2 = new System.Windows.Forms.CheckBox();
             this.b1 = new System.Windows.Forms.CheckBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.spnW = new DevExpress.XtraEditors.SpinEdit();
+            this.label1 = new System.Windows.Forms.Label();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.alert = new System.Windows.Forms.Label();
             this.btnReset = new System.Windows.Forms.Button();
@@ -54,19 +60,16 @@
             this.tdcxBS = new System.Windows.Forms.BindingSource(this.components);
             this.tuDienCamXucTableAdapter = new EmoDic.Emo_DictionaryDataSetTableAdapters.TuDienCamXucTableAdapter();
             this.tableAdapterManager = new EmoDic.Emo_DictionaryDataSetTableAdapters.TableAdapterManager();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.checkAllA = new System.Windows.Forms.CheckBox();
-            this.checkAllB = new System.Windows.Forms.CheckBox();
             this.btnWatch = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.aft.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.bf.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.spnW.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ed_DS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tdcxBS)).BeginInit();
-            this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -96,6 +99,27 @@
             this.aft.TabIndex = 6;
             this.aft.TabStop = false;
             this.aft.Text = "After";
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.checkAllA);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(3, 17);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(315, 23);
+            this.panel1.TabIndex = 17;
+            // 
+            // checkAllA
+            // 
+            this.checkAllA.AutoSize = true;
+            this.checkAllA.Location = new System.Drawing.Point(8, 3);
+            this.checkAllA.Name = "checkAllA";
+            this.checkAllA.Size = new System.Drawing.Size(82, 17);
+            this.checkAllA.TabIndex = 0;
+            this.checkAllA.Text = "Chọn tất cả";
+            this.checkAllA.UseVisualStyleBackColor = true;
             // 
             // a5
             // 
@@ -179,6 +203,27 @@
             this.bf.TabStop = false;
             this.bf.Text = "Before";
             // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel2.Controls.Add(this.checkAllB);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel2.Location = new System.Drawing.Point(3, 17);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(288, 23);
+            this.panel2.TabIndex = 18;
+            // 
+            // checkAllB
+            // 
+            this.checkAllB.AutoSize = true;
+            this.checkAllB.Location = new System.Drawing.Point(8, 3);
+            this.checkAllB.Name = "checkAllB";
+            this.checkAllB.Size = new System.Drawing.Size(82, 17);
+            this.checkAllB.TabIndex = 1;
+            this.checkAllB.Text = "Chọn tất cả";
+            this.checkAllB.UseVisualStyleBackColor = true;
+            // 
             // b6
             // 
             this.b6.AutoSize = true;
@@ -259,6 +304,8 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.spnW);
+            this.groupBox2.Controls.Add(this.label1);
             this.groupBox2.Controls.Add(this.btnUpdate);
             this.groupBox2.Controls.Add(this.alert);
             this.groupBox2.Controls.Add(this.btnReset);
@@ -271,6 +318,32 @@
             this.groupBox2.Size = new System.Drawing.Size(788, 173);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
+            // 
+            // spnW
+            // 
+            this.spnW.EditValue = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.spnW.Location = new System.Drawing.Point(589, 56);
+            this.spnW.Name = "spnW";
+            this.spnW.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.spnW.Properties.Mask.EditMask = "f0";
+            this.spnW.Size = new System.Drawing.Size(100, 20);
+            this.spnW.TabIndex = 7;
+            this.spnW.EditValueChanged += new System.EventHandler(this.spinEdit1_EditValueChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(525, 55);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(58, 19);
+            this.label1.TabIndex = 6;
+            this.label1.Text = "Weight :";
             // 
             // btnUpdate
             // 
@@ -316,7 +389,7 @@
             // 
             this.seed.AutoSize = true;
             this.seed.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.seed.Location = new System.Drawing.Point(157, 55);
+            this.seed.Location = new System.Drawing.Point(63, 55);
             this.seed.Name = "seed";
             this.seed.Size = new System.Drawing.Size(51, 19);
             this.seed.TabIndex = 1;
@@ -324,7 +397,7 @@
             // 
             // txtSeed
             // 
-            this.txtSeed.Location = new System.Drawing.Point(214, 53);
+            this.txtSeed.Location = new System.Drawing.Point(120, 53);
             this.txtSeed.Name = "txtSeed";
             this.txtSeed.Size = new System.Drawing.Size(375, 21);
             this.txtSeed.TabIndex = 0;
@@ -350,48 +423,6 @@
             this.tableAdapterManager.TuDienCamXucTableAdapter = this.tuDienCamXucTableAdapter;
             this.tableAdapterManager.UpdateOrder = EmoDic.Emo_DictionaryDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.checkAllA);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(3, 17);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(315, 23);
-            this.panel1.TabIndex = 17;
-            // 
-            // panel2
-            // 
-            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel2.Controls.Add(this.checkAllB);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(3, 17);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(288, 23);
-            this.panel2.TabIndex = 18;
-            // 
-            // checkAllA
-            // 
-            this.checkAllA.AutoSize = true;
-            this.checkAllA.Location = new System.Drawing.Point(8, 3);
-            this.checkAllA.Name = "checkAllA";
-            this.checkAllA.Size = new System.Drawing.Size(82, 17);
-            this.checkAllA.TabIndex = 0;
-            this.checkAllA.Text = "Chọn tất cả";
-            this.checkAllA.UseVisualStyleBackColor = true;
-            // 
-            // checkAllB
-            // 
-            this.checkAllB.AutoSize = true;
-            this.checkAllB.Location = new System.Drawing.Point(8, 3);
-            this.checkAllB.Name = "checkAllB";
-            this.checkAllB.Size = new System.Drawing.Size(82, 17);
-            this.checkAllB.TabIndex = 1;
-            this.checkAllB.Text = "Chọn tất cả";
-            this.checkAllB.UseVisualStyleBackColor = true;
-            // 
             // btnWatch
             // 
             this.btnWatch.Location = new System.Drawing.Point(306, 359);
@@ -410,22 +441,25 @@
             this.Controls.Add(this.btnWatch);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.MaximizeBox = false;
             this.Name = "Form1";
             this.Text = "Emotion Dictionary";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.groupBox1.ResumeLayout(false);
             this.aft.ResumeLayout(false);
             this.aft.PerformLayout();
-            this.bf.ResumeLayout(false);
-            this.bf.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ed_DS)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tdcxBS)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.bf.ResumeLayout(false);
+            this.bf.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.spnW.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ed_DS)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tdcxBS)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -462,6 +496,8 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.CheckBox checkAllB;
         private System.Windows.Forms.Button btnWatch;
+        private DevExpress.XtraEditors.SpinEdit spnW;
+        private System.Windows.Forms.Label label1;
     }
 }
 

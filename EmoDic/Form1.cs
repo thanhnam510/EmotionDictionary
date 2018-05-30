@@ -169,5 +169,13 @@ namespace EmoDic
             Form frm = new EmotionDictionary_View();
             frm.Show();
         }
+
+        private void spinEdit1_EditValueChanged(object sender, EventArgs e)
+        {
+            if (spnW.Value >=0)
+                spnW.Value = 1;
+            else
+                spnW.Value = -1;
+        }
     }
 }

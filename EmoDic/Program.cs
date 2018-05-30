@@ -65,6 +65,18 @@ namespace EmoDic
                     return true;
                 }
             }
+            catch (SqlException sqlE)
+            {
+                if (sqlE.Number == -1 || sqlE.Number == 2 || sqlE.Number == 67)
+                {
+                    MessageBox.Show("Chuỗi kết nối (Connect string) không đúng hoặc có lỗi khi kết nối đến server.");
+                }else
+                MessageBox.Show(sqlE.Message);
+                foreach (Form frm in Application.OpenForms)
+                    if (frm is Form2)
+                        return false;
+                OpenForm(new Form2());
+            }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
