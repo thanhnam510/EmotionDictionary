@@ -87,7 +87,7 @@ namespace EmoDic
                     {
                         emo = box.Text + " " + seed;
                         weight = short.Parse(box.Tag.ToString());
-                        tuDienCamXucTableAdapter.Insert(emo, weight, false);
+                        tuDienCamXucTableAdapter.Insert(emo, (short)(weight*spnW.Value), false);
                     }
                 }
                 catch { }
@@ -100,7 +100,7 @@ namespace EmoDic
                     {
                         emo = seed + " " + box.Text;
                         weight = short.Parse(box.Tag.ToString());
-                        tuDienCamXucTableAdapter.Insert(emo, weight, false);
+                        tuDienCamXucTableAdapter.Insert(emo, (short)(weight * spnW.Value), false);
                     }
                 }
                 catch { }
@@ -172,10 +172,10 @@ namespace EmoDic
 
         private void spinEdit1_EditValueChanged(object sender, EventArgs e)
         {
-            if (spnW.Value >=0)
-                spnW.Value = 1;
-            else
-                spnW.Value = -1;
+            if (spnW.Value >3)
+                spnW.Value = 3;
+            if (spnW.Value < -3)
+                spnW.Value = -3;
         }
     }
 }
