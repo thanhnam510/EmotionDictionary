@@ -9,11 +9,11 @@ using System.Windows.Forms;
 
 namespace EmoDic
 {
-    public partial class Form1 : DevExpress.XtraEditors.XtraForm
+    public partial class Main : DevExpress.XtraEditors.XtraForm
     {
         private List<CheckBox> before;
         private List<CheckBox> after;
-        public Form1()
+        public Main()
         {
             InitializeComponent();
         }
@@ -176,6 +176,12 @@ namespace EmoDic
                 spnW.Value = 3;
             if (spnW.Value < -3)
                 spnW.Value = -3;
+        }
+
+        private void btnXtract_Click(object sender, EventArgs e)
+        {
+            Form frm = new Xtract();
+            frm.Show();
         }
     }
 }

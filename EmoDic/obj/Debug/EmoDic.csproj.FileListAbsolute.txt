@@ -267,8 +267,6 @@ D:\workspace\Visual Project\EmotionDic\EmoDictionary\EmoDic\bin\Debug\ja\DevExpr
 D:\workspace\Visual Project\EmotionDic\EmoDictionary\EmoDic\bin\Debug\ru\DevExpress.Office.v17.1.Core.resources.dll
 D:\workspace\Visual Project\EmotionDic\EmoDictionary\EmoDic\obj\Debug\EmoDic.csprojAssemblyReference.cache
 D:\workspace\Visual Project\EmotionDic\EmoDictionary\EmoDic\obj\Debug\EmoDic.EmotionDictionary_View.resources
-D:\workspace\Visual Project\EmotionDic\EmoDictionary\EmoDic\obj\Debug\EmoDic.Form1.resources
-D:\workspace\Visual Project\EmotionDic\EmoDictionary\EmoDic\obj\Debug\EmoDic.Form2.resources
 D:\workspace\Visual Project\EmotionDic\EmoDictionary\EmoDic\obj\Debug\EmoDic.Properties.Resources.resources
 D:\workspace\Visual Project\EmotionDic\EmoDictionary\EmoDic\obj\Debug\EmoDic.csproj.GenerateResource.cache
 D:\workspace\Visual Project\EmotionDic\EmoDictionary\EmoDic\obj\Debug\EmoDic.exe.licenses
@@ -276,3 +274,6 @@ D:\workspace\Visual Project\EmotionDic\EmoDictionary\EmoDic\obj\Debug\EmoDic.csp
 D:\workspace\Visual Project\EmotionDic\EmoDictionary\EmoDic\obj\Debug\EmoDic.csproj.CopyComplete
 D:\workspace\Visual Project\EmotionDic\EmoDictionary\EmoDic\obj\Debug\EmoDic.exe
 D:\workspace\Visual Project\EmotionDic\EmoDictionary\EmoDic\obj\Debug\EmoDic.pdb
+D:\workspace\Visual Project\EmotionDic\EmoDictionary\EmoDic\obj\Debug\EmoDic.Xtract.resources
+D:\workspace\Visual Project\EmotionDic\EmoDictionary\EmoDic\obj\Debug\EmoDic.Main.resources
+D:\workspace\Visual Project\EmotionDic\EmoDictionary\EmoDic\obj\Debug\EmoDic.EmotionDictionary.resources

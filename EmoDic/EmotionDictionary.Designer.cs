@@ -1,6 +1,6 @@
 ﻿namespace EmoDic
 {
-    partial class Form2
+    partial class EmotionDictionary
     {
         /// <summary>
         /// Required designer variable.

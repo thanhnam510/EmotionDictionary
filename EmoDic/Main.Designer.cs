@@ -1,6 +1,6 @@
 ﻿namespace EmoDic
 {
-    partial class Form1
+    partial class Main
     {
         /// <summary>
         /// Required designer variable.
@@ -61,6 +61,7 @@
             this.tuDienCamXucTableAdapter = new EmoDic.Emo_DictionaryDataSetTableAdapters.TuDienCamXucTableAdapter();
             this.tableAdapterManager = new EmoDic.Emo_DictionaryDataSetTableAdapters.TableAdapterManager();
             this.btnWatch = new System.Windows.Forms.Button();
+            this.btnXtract = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.aft.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -425,7 +426,7 @@
             // 
             // btnWatch
             // 
-            this.btnWatch.Location = new System.Drawing.Point(306, 359);
+            this.btnWatch.Location = new System.Drawing.Point(159, 362);
             this.btnWatch.Name = "btnWatch";
             this.btnWatch.Size = new System.Drawing.Size(175, 23);
             this.btnWatch.TabIndex = 2;
@@ -433,17 +434,28 @@
             this.btnWatch.UseVisualStyleBackColor = true;
             this.btnWatch.Click += new System.EventHandler(this.btnWatch_Click);
             // 
-            // Form1
+            // btnXtract
+            // 
+            this.btnXtract.Location = new System.Drawing.Point(440, 362);
+            this.btnXtract.Name = "btnXtract";
+            this.btnXtract.Size = new System.Drawing.Size(175, 23);
+            this.btnXtract.TabIndex = 3;
+            this.btnXtract.Text = "Rút trích";
+            this.btnXtract.UseVisualStyleBackColor = true;
+            this.btnXtract.Click += new System.EventHandler(this.btnXtract_Click);
+            // 
+            // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(788, 397);
+            this.Controls.Add(this.btnXtract);
             this.Controls.Add(this.btnWatch);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
-            this.Name = "Form1";
+            this.Name = "Main";
             this.Text = "Emotion Dictionary";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.groupBox1.ResumeLayout(false);
@@ -498,6 +510,7 @@
         private System.Windows.Forms.Button btnWatch;
         private DevExpress.XtraEditors.SpinEdit spnW;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnXtract;
     }
 }
 

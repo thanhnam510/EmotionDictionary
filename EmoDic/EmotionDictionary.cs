@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace EmoDic
 {
-    public partial class Form2 : Form
+    public partial class EmotionDictionary : Form
     {
-        public Form2()
+        public EmotionDictionary()
         {
             InitializeComponent();
         }

@@ -8,6 +8,7 @@ using DevExpress.LookAndFeel;
 using System.IO;
 using System.Data.SqlClient;
 using System.Text;
+using System.Data;
 
 namespace EmoDic
 {
@@ -31,6 +32,7 @@ namespace EmoDic
         public static string path = "";
         public static FileStream fs;
         public static int Count = 0;
+        public static SqlConnection conn = new SqlConnection();
         static public void Connect(string server,string db,string user,string pass)
         {
 
@@ -49,9 +51,10 @@ namespace EmoDic
                 fs.Close();
                 return CheckConnect();
             }
-            OpenForm(new Form2());
+            OpenForm(new EmotionDictionary());
             return false;
         }
+
         static public Boolean CheckConnect()
         {
             try
@@ -61,7 +64,7 @@ namespace EmoDic
                 {
                     sql.Open();
                     sql.Close();
-                    OpenForm(new Form1());
+                    OpenForm(new Main());
                     return true;
                 }
             }
@@ -73,17 +76,17 @@ namespace EmoDic
                 }else
                 MessageBox.Show(sqlE.Message);
                 foreach (Form frm in Application.OpenForms)
-                    if (frm is Form2)
+                    if (frm is EmotionDictionary)
                         return false;
-                OpenForm(new Form2());
+                OpenForm(new EmotionDictionary());
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
                 foreach (Form frm in Application.OpenForms)
-                    if (frm is Form2)
+                    if (frm is EmotionDictionary)
                         return false;
-                OpenForm(new Form2());
+                OpenForm(new EmotionDictionary());
             }
             return false;
         }
@@ -97,7 +100,7 @@ namespace EmoDic
             else
             {
                 foreach (Form form in Application.OpenForms)
-                    if (form is Form2)
+                    if (form is EmotionDictionary)
                         form.Hide();
                 frm.ShowDialog();
             }
@@ -111,5 +114,75 @@ namespace EmoDic
             sWriter.Flush();
             fs.Close();
         }
+        public static int KetNoi()
+        {
+            if (Program.conn != null && Program.conn.State == ConnectionState.Open)
+            {
+                Program.conn.Close();
+            }
+            try
+            {
+                Program.conn.ConnectionString = Program.connStr;
+                Program.conn.Open();
+                return 1;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi kết nối CSDL.\nBạn xem lại username và password.\n" + ex.Message, "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return 0;
+            }
+        }
+        public static SqlDataReader ExecSqlDataReader(String strLenh)
+        {
+            SqlDataReader myreader;
+            SqlCommand sqlcmd = new SqlCommand(strLenh, Program.conn);
+            sqlcmd.CommandType = CommandType.Text;
+            if (Program.conn.State == ConnectionState.Closed)
+                Program.conn.Open();
+            try
+            {
+                myreader = sqlcmd.ExecuteReader();
+                return myreader;
+            }
+            catch (SqlException ex)
+            {
+                Program.conn.Close();
+                MessageBox.Show(ex.Message);
+                return null;
+            }
+        }
+
+        public static DataTable ExecSqlDataTable(String strLenh)
+        {
+            DataTable dt = new DataTable();
+            if (Program.conn.State == ConnectionState.Closed)
+                Program.conn.Open();
+            SqlDataAdapter da = new SqlDataAdapter(strLenh, Program.conn);
+            da.Fill(dt);
+            conn.Close();
+            return dt;
+
+        }
+
+
+        public static Boolean ExecSqlNonQuery(String strLenh)
+        {
+            if (Program.conn.State == ConnectionState.Closed)
+                Program.conn.Open();
+            SqlCommand sqlcmd = Program.conn.CreateCommand();
+            try
+            {
+                sqlcmd.CommandText = strLenh;
+                sqlcmd.ExecuteNonQuery();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
     }
 }
+
