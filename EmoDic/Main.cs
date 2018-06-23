@@ -79,15 +79,23 @@ namespace EmoDic
         {
             String emo;
             short weight;
+            int x = 1;
+            if (spnW.Value < 0)
+            {
+                x = -1;
+            }
+            else
+                x = 1;
             foreach (CheckBox box in before)
             {
+
                 try
                 {
                     if (box.Checked)
                     {
                         emo = box.Text + " " + seed;
                         weight = short.Parse(box.Tag.ToString());
-                        tuDienCamXucTableAdapter.Insert(emo, (short)(weight*spnW.Value), false);
+                        tuDienCamXucTableAdapter.Insert(emo, (short)(weight*x + spnW.Value), false);
                     }
                 }
                 catch { }
@@ -100,7 +108,7 @@ namespace EmoDic
                     {
                         emo = seed + " " + box.Text;
                         weight = short.Parse(box.Tag.ToString());
-                        tuDienCamXucTableAdapter.Insert(emo, (short)(weight * spnW.Value), false);
+                        tuDienCamXucTableAdapter.Insert(emo, (short)(weight*x + spnW.Value), false);
                     }
                 }
                 catch { }

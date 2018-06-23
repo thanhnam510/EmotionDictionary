@@ -62,6 +62,7 @@
             this.tableAdapterManager = new EmoDic.Emo_DictionaryDataSetTableAdapters.TableAdapterManager();
             this.btnWatch = new System.Windows.Forms.Button();
             this.btnXtract = new System.Windows.Forms.Button();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.aft.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -131,7 +132,7 @@
             this.a5.Name = "a5";
             this.a5.Size = new System.Drawing.Size(62, 17);
             this.a5.TabIndex = 16;
-            this.a5.Tag = "3";
+            this.a5.Tag = "2";
             this.a5.Text = "hết sảy";
             this.a5.UseVisualStyleBackColor = true;
             // 
@@ -144,7 +145,7 @@
             this.a4.Name = "a4";
             this.a4.Size = new System.Drawing.Size(61, 17);
             this.a4.TabIndex = 15;
-            this.a4.Tag = "2";
+            this.a4.Tag = "1";
             this.a4.Text = "lắm lắm";
             this.a4.UseVisualStyleBackColor = true;
             // 
@@ -157,7 +158,7 @@
             this.a3.Name = "a3";
             this.a3.Size = new System.Drawing.Size(62, 17);
             this.a3.TabIndex = 14;
-            this.a3.Tag = "3";
+            this.a3.Tag = "2";
             this.a3.Text = "hết sức";
             this.a3.UseVisualStyleBackColor = true;
             // 
@@ -170,7 +171,7 @@
             this.a2.Name = "a2";
             this.a2.Size = new System.Drawing.Size(57, 17);
             this.a2.TabIndex = 13;
-            this.a2.Tag = "3";
+            this.a2.Tag = "2";
             this.a2.Text = "cực kỳ";
             this.a2.UseVisualStyleBackColor = true;
             // 
@@ -183,12 +184,13 @@
             this.a1.Name = "a1";
             this.a1.Size = new System.Drawing.Size(43, 17);
             this.a1.TabIndex = 12;
-            this.a1.Tag = "2";
+            this.a1.Tag = "1";
             this.a1.Text = "cực";
             this.a1.UseVisualStyleBackColor = true;
             // 
             // bf
             // 
+            this.bf.Controls.Add(this.checkBox1);
             this.bf.Controls.Add(this.panel2);
             this.bf.Controls.Add(this.b6);
             this.bf.Controls.Add(this.b5);
@@ -234,7 +236,7 @@
             this.b6.Name = "b6";
             this.b6.Size = new System.Drawing.Size(62, 17);
             this.b6.TabIndex = 7;
-            this.b6.Tag = "3";
+            this.b6.Tag = "2";
             this.b6.Text = "hết sức";
             this.b6.UseVisualStyleBackColor = true;
             // 
@@ -247,7 +249,7 @@
             this.b5.Name = "b5";
             this.b5.Size = new System.Drawing.Size(44, 17);
             this.b5.TabIndex = 6;
-            this.b5.Tag = "2";
+            this.b5.Tag = "1";
             this.b5.Text = "quá";
             this.b5.UseVisualStyleBackColor = true;
             // 
@@ -258,10 +260,10 @@
             this.b4.CheckState = System.Windows.Forms.CheckState.Checked;
             this.b4.Location = new System.Drawing.Point(12, 112);
             this.b4.Name = "b4";
-            this.b4.Size = new System.Drawing.Size(57, 17);
+            this.b4.Size = new System.Drawing.Size(53, 17);
             this.b4.TabIndex = 5;
-            this.b4.Tag = "3";
-            this.b4.Text = "cực kỳ";
+            this.b4.Tag = "2";
+            this.b4.Text = "cực kì";
             this.b4.UseVisualStyleBackColor = true;
             // 
             // b3
@@ -273,7 +275,7 @@
             this.b3.Name = "b3";
             this.b3.Size = new System.Drawing.Size(43, 17);
             this.b3.TabIndex = 4;
-            this.b3.Tag = "2";
+            this.b3.Tag = "1";
             this.b3.Text = "cực";
             this.b3.UseVisualStyleBackColor = true;
             // 
@@ -286,7 +288,7 @@
             this.b2.Name = "b2";
             this.b2.Size = new System.Drawing.Size(51, 17);
             this.b2.TabIndex = 3;
-            this.b2.Tag = "2";
+            this.b2.Tag = "1";
             this.b2.Text = "rất là";
             this.b2.UseVisualStyleBackColor = true;
             // 
@@ -299,7 +301,7 @@
             this.b1.Name = "b1";
             this.b1.Size = new System.Drawing.Size(40, 17);
             this.b1.TabIndex = 2;
-            this.b1.Tag = "2";
+            this.b1.Tag = "1";
             this.b1.Text = "rất";
             this.b1.UseVisualStyleBackColor = true;
             // 
@@ -352,7 +354,7 @@
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(75, 23);
             this.btnUpdate.TabIndex = 5;
-            this.btnUpdate.Text = "Update";
+            this.btnUpdate.Text = "Cập nhật";
             this.btnUpdate.UseVisualStyleBackColor = true;
             this.btnUpdate.Click += new System.EventHandler(this.update_Click);
             // 
@@ -382,7 +384,7 @@
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(75, 23);
             this.btnAdd.TabIndex = 2;
-            this.btnAdd.Text = "Add";
+            this.btnAdd.Text = "Thêm";
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.add_Click);
             // 
@@ -444,6 +446,19 @@
             this.btnXtract.UseVisualStyleBackColor = true;
             this.btnXtract.Click += new System.EventHandler(this.btnXtract_Click);
             // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Checked = true;
+            this.checkBox1.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox1.Location = new System.Drawing.Point(98, 91);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(43, 17);
+            this.checkBox1.TabIndex = 19;
+            this.checkBox1.Tag = "1";
+            this.checkBox1.Text = "khá";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -456,7 +471,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.Name = "Main";
-            this.Text = "Emotion Dictionary";
+            this.Text = "Main";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.groupBox1.ResumeLayout(false);
             this.aft.ResumeLayout(false);
@@ -511,6 +526,7 @@
         private DevExpress.XtraEditors.SpinEdit spnW;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnXtract;
+        private System.Windows.Forms.CheckBox checkBox1;
     }
 }
 

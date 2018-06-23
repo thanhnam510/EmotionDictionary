@@ -7,7 +7,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using System.Threading;
+using DevExpress.XtraBars.Controls;
+using System.IO;
+using WinFormAnimation;
 namespace EmoDic
 {
     public partial class EmotionDictionary_View : Form
@@ -54,6 +57,17 @@ namespace EmoDic
             if (e.KeyCode == Keys.Delete)
             {
                 delete();
+            }
+        }
+
+        private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            while(groupBox1.Height < 150)
+            {
+                new Animator2D(
+        new Path2D(this.Width, this.Height, this.Width, this.Height-200, 500)
+    .Play(groupBox1, Animator2D.KnownProperties.Location);
+
             }
         }
     }
