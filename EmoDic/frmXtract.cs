@@ -11,13 +11,13 @@ using System.Windows.Forms;
 
 namespace EmoDic
 {
-    public partial class Xtract : Form
+    public partial class frmXtract : Form
     {
         List<string> Terms = new List<string>();
         private List<int> G = new List<int>(); 
         private List<int> N; 
         private List<int> P; 
-        public Xtract()
+        public frmXtract()
         {
             InitializeComponent();
         }
@@ -99,7 +99,7 @@ namespace EmoDic
             string[] sentences = txtA.Text.Split(separators, StringSplitOptions.RemoveEmptyEntries);
             string[] words;
             string[] pharses;
-            Terms = new List<string>();
+            List<string> Terms = new List<string>();
             List<int> TermValues = new List<int>();
             foreach (String sentence in sentences)
             {
@@ -112,6 +112,7 @@ namespace EmoDic
                     int stop = words.Length;
                     bool isStop = false;
                     string Term = "";
+                    List<string> temp = new List<string>();
                     if (Program.KetNoi() == 0) return;
                     while (isStop == false && stop >= 0)
                     {
@@ -121,18 +122,37 @@ namespace EmoDic
                         {
                             Term += words[i] + " ";
                         }
-                        string strLenh = "select * from TuDienCamXuc where TU_CAM_XUC  = N'" + Term.Trim() + "'";
+                        string strLenh = "exec dbo.SP_TimKiem N'"+ Term.Trim() + "'";
                         myReader = Program.ExecSqlDataReader(strLenh);
                         myReader.Read();
-                        if (myReader.HasRows)
+                        int  ret= myReader.GetInt32(0);
+                        myReader.Close();
+                        if (ret !=0 )
                         {
-                            Terms.Add(Term.Trim());
-                            TermValues.Add(myReader.GetInt16(1));
+                            if (ret == 1)
+                            {
+                                temp.Add(Term.Trim());
+                                Terms.Add(Term.Trim());
+                            }
+                            else
+                            {
+                                foreach(string t in temp)
+                                {
+                                    strLenh = "exec dbo.SP_LayTrongSo N'" + Term + "',N'" + t + "'";
+                                    myReader = Program.ExecSqlDataReader(strLenh);
+                                    myReader.Read();
+                                    TermValues.Add(myReader.GetInt32(0));
+                                    myReader.Close();
+                                }
+                                Terms.Add(Term.Trim());
+                                TermValues.Add(-1);
+                                temp = new List<string>();
+                            }
                             if (start == 0)
                                 isStop = true;
                             else
                             {
-                                stop = start - 1;
+                                stop = start;
                                 start = 0;
                             }
                         }
@@ -146,7 +166,7 @@ namespace EmoDic
                             else
                                 start++;
                         }
-                        myReader.Close();
+                        
                     }
 
                 }
@@ -155,8 +175,8 @@ namespace EmoDic
             {
                 lbrs.Text += Terms[index]+": "+TermValues[index]+" | ";
             }
-            createVector(TermValues); // tạo các vector N,P,G
-            cal(); // tính toàn xác định đánh giá
+            createVector(TermValues);
+            cal();
         }
 
     }

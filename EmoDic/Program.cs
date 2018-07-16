@@ -51,7 +51,7 @@ namespace EmoDic
                 fs.Close();
                 return CheckConnect();
             }
-            OpenForm(new EmotionDictionary());
+            OpenForm(new frmKetnoi());
             return false;
         }
 
@@ -76,17 +76,17 @@ namespace EmoDic
                 }else
                 MessageBox.Show(sqlE.Message);
                 foreach (Form frm in Application.OpenForms)
-                    if (frm is EmotionDictionary)
+                    if (frm is frmKetnoi)
                         return false;
-                OpenForm(new EmotionDictionary());
+                OpenForm(new frmKetnoi());
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
                 foreach (Form frm in Application.OpenForms)
-                    if (frm is EmotionDictionary)
+                    if (frm is frmKetnoi)
                         return false;
-                OpenForm(new EmotionDictionary());
+                OpenForm(new frmKetnoi());
             }
             return false;
         }
@@ -100,7 +100,7 @@ namespace EmoDic
             else
             {
                 foreach (Form form in Application.OpenForms)
-                    if (form is EmotionDictionary)
+                    if (form is frmKetnoi)
                         form.Hide();
                 frm.ShowDialog();
             }

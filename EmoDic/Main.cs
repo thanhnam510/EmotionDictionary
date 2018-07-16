@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -20,8 +21,12 @@ namespace EmoDic
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            tuDienCamXucTableAdapter.Connection.ConnectionString = Program.connStr;
-            this.tuDienCamXucTableAdapter.Fill(this.ed_DS.TuDienCamXuc);
+            // TODO: This line of code loads data into the 'edDS.TRONG_SO' table. You can move, or remove it, as needed.
+            
+            // TODO: This line of code loads data into the 'edDS.DAC_TRUNG_CAM_XUC' table. You can move, or remove it, as needed.
+            // TODO: This line of code loads data into the 'emo_DictionaryDataSet.DAC_TRUNG_NGU_NGHIA' table. You can move, or remove it, as needed.
+            this.dtnnTA.Fill(this.edDS.DAC_TRUNG_NGU_NGHIA);
+
             before = bf.Controls.OfType<CheckBox>().ToList<CheckBox>();
             after = aft.Controls.OfType<CheckBox>().ToList<CheckBox>();
             foreach (CheckBox box in before)
@@ -32,87 +37,106 @@ namespace EmoDic
             checkAllB.Click += new System.EventHandler(this.checkAllB_CheckedChange);
             checkAllA.Checked = checkAllB.Checked = true;
             txtSeed.Focus();
+            ttCb.SelectedIndex = 1;
+            ttCb.SelectedIndex = 0;
         }
 
         private void add_Click(object sender, EventArgs e)
         {
-            if (txtSeed.Text == "")
+            if (txtMA.Text == "")
             {
-                alert.Text = "Seed không được để trống";
-                txtSeed.Focus();
+                alert2lb.Text = "Không được để trống mã thực thể";
+                txtMA.Focus();
                 return;
             }
-            AddNewSeed(txtSeed.Text.Trim());
-        }
-        private void AddNewSeed(String seed)
-        {
+            if (txtTTYN.Text == "")
+            {
+                alert2lb.Text = "Không được để trống thực thể ý nghĩa";
+                txtTTYN.Focus();
+                return;
+            }
             try
             {
-                tuDienCamXucTableAdapter.Insert(txtSeed.Text, 1, true);
-                AddNotSeed(seed);
-                alert.Text = "Thêm thành công";
+                dtnnTA.Insert(txtMA.Text.Trim(), txtTTYN.Text.Trim());
+                this.dtnnTA.Fill(this.edDS.DAC_TRUNG_NGU_NGHIA);
+                this.ttCb.DataSource = this.dtnnBS;
+                alert2lb.Text = "THêm thành công";
+                int temp = ttCb.SelectedIndex;
+                ttCb.SelectedIndex = 1;
+                ttCb.SelectedIndex = temp;
             }
             catch (Exception ex)
             {
+                alert2lb.Text = "Thêm thất bại";
                 MessageBox.Show(ex.Message);
-                return;
             }
         }
 
         private void update_Click(object sender, EventArgs e)
         {
+            int dem;
             if (txtSeed.Text == "")
             {
-                alert.Text = "Seed không được để trống";
+                alert.Text = "Không được để trống";
                 return;
             }
-            Update(txtSeed.Text);
+            if (Program.KetNoi() == 0) return;
+            dem = Add(ttCb.SelectedValue.ToString(), txtSeed.Text, (short)spnW.Value, false);
+            AddNotSeed(txtSeed.Text,dem);
         }
 
-        private void Update(String seed)
+        private int Add(string id,string tuCamXuc,short trongSo,bool hatGiong)
         {
-            AddNotSeed(seed);
-            alert.Text = "Thêm thành công";
-        }
-
-        private void AddNotSeed(String seed)
-        {
-            String emo;
-            short weight;
-            int x = 1;
-            if (spnW.Value < 0)
+            SqlDataReader myReader;
+            int ret =0;
+            string strLenh = "exec [dbo].[SP_Them] N'" + id + "',N'" + tuCamXuc + "'," + trongSo + "," + hatGiong;
+            try
             {
-                x = -1;
+                myReader = Program.ExecSqlDataReader(strLenh);
+                myReader.Read();
+                ret = myReader.GetInt32(0);
+                myReader.Close();
             }
-            else
-                x = 1;
-            foreach (CheckBox box in before)
+            catch (Exception ex)
             {
+              //  MessageBox.Show(ex.Message);
+            }
+            return ret;
+        }
 
-                try
+        private void AddNotSeed(string seed, int d)
+        {
+            int tong = 1;
+            int dem = d;
+            try
+            {
+                foreach (CheckBox box in before)
                 {
                     if (box.Checked)
                     {
-                        emo = box.Text + " " + seed;
-                        weight = short.Parse(box.Tag.ToString());
-                        tuDienCamXucTableAdapter.Insert(emo, (short)(weight*x + spnW.Value), false);
+                        tong++;
+                        string emo = box.Text + " " + seed;
+                        short weight = (short)spnW.Value;
+                        weight *= short.Parse(box.Tag.ToString());
+                        string id = ttCb.SelectedValue.ToString().Trim();
+                        dem += Add(id, emo, weight, false);
                     }
                 }
-                catch { }
-            }
-            foreach (CheckBox box in after)
-            {
-                try
+                foreach (CheckBox box in after)
                 {
                     if (box.Checked)
                     {
-                        emo = seed + " " + box.Text;
-                        weight = short.Parse(box.Tag.ToString());
-                        tuDienCamXucTableAdapter.Insert(emo, (short)(weight*x + spnW.Value), false);
+                        tong++;
+                        string emo = seed + " " + box.Text;
+                        short weight = (short)spnW.Value;
+                        weight *= short.Parse(box.Tag.ToString());
+                        string id = ttCb.SelectedValue.ToString().Trim();
+                        dem += Add(id, emo, weight, false);
                     }
                 }
-                catch { }
             }
+            catch { }
+            alert.Text = "Thêm thành công"+ dem+"/"+tong;
         }
 
         private void before_CheckBox_CheckedChange(object sender, EventArgs e)
@@ -174,7 +198,7 @@ namespace EmoDic
 
         private void btnWatch_Click(object sender, EventArgs e)
         {
-            Form frm = new EmotionDictionary_View();
+            Form frm = new frmTuDien();
             frm.Show();
         }
 
@@ -188,8 +212,39 @@ namespace EmoDic
 
         private void btnXtract_Click(object sender, EventArgs e)
         {
-            Form frm = new Xtract();
+            Form frm = new frmXtract();
             frm.Show();
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            int dem;
+            if (txtSeed.Text == "")
+            {
+                alert.Text = "Không được để trống từ cảm xúc";
+                txtSeed.Focus();
+                return;
+            }
+            if (Program.KetNoi() == 0) return;
+            try
+            {
+                dem = Add(ttCb.SelectedValue.ToString(), txtSeed.Text, (short)spnW.Value, true);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Đã tồn tại, hãy kiểm tra lại từ cảm xúc \n" + ex.Message);
+                txtSeed.Focus();
+                return;
+            }
+            AddNotSeed(txtSeed.Text.Trim(),dem);
+        }
+
+        private void dAC_TRUNG_NGU_NGHIABindingNavigatorSaveItem_Click(object sender, EventArgs e)
+        {
+            this.Validate();
+            this.dtnnBS.EndEdit();
+            this.tableAdapterManager.UpdateAll(this.edDS);
+
         }
     }
 }
